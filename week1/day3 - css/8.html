@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animations</title>
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes chintu {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .cont {
+        width: 200px;
+        height: 200px;
+        background-color: rgb(8, 65, 65);
+        animation-name: chintu;
+        animation-duration: 3s;
+        animation-delay: 0s;
+        animation-fill-mode: forwards;
+        animation-timing-function: linear;
+        animation-iteration-count: 20;
+        animation-play-state: running;
+      }
+
+      .cont:hover {
+        animation-play-state: paused;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cont"></div>
+  </body>
+</html>

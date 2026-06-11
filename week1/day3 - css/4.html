@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo Class</title>
+    <!-- apply new state/behaviour to any element -->
+
+    <style>
+        button:hover{
+            background-color: red;
+        }
+
+        button:active{
+            background-color: orange;
+        }
+
+        input:focus {
+            border: 1px solid red;
+            background-color: rgb(168, 112, 112);
+        }
+
+        input:checked+label{
+            color: green;
+        }
+
+        input:disabled{
+            background-color: rgb(171, 1, 1);
+        }
+    </style>
+</head>
+<body>
+    <button>Submit</button><br>
+
+    <input type="text"><br>
+    <input type="checkbox" name="" id="ip">
+    <label for="ip">Change color to green</label><br>
+    <input type="text" name="" id="" disabled>
+    
+</body>
+</html>

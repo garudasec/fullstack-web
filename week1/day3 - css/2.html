@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive web design</title>
+    <style>
+        .cont{
+            background-color: red;
+            height: 100vh;
+        }
+
+        @media screen and (max-width: 1000px) and (min-width: 600px){
+            .cont{
+                background-color: green;
+            }
+        }
+
+        @media screen and (max-width: 599px) and (min-width: 250px){
+            .cont{
+                background-color: blue;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="cont"></div>
+    
+</body>
+</html>
