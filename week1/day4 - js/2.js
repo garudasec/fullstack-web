@@ -1,5 +1,5 @@
 // data type 
-//  total types - 2 (i.e  primitive / in-built / value data type and non-primitive/referrence data type)
+//  total types - 2 (i.e  primitive / in-built / value data type and non-primitive/referrence/user-defined data type)
 
 // primitive / in-built / value 
 // numbers 
