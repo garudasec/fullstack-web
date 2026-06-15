@@ -1,5 +1,5 @@
 // function
-
+// resuable block of code, used to perform certain task!
 // it includes 2 steps, 
 // 1st step is to define or decleare function and 2nd step is to call or invoke the function
 

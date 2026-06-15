@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get values from input tag</title>
+</head>
+
+<body>
+    <input type="text" id="inp" placeholder="Enter your name">
+    <button onclick="getName()" id="btn">Submit</button>
+
+    <h1 id="nm">Get name here...</h1>
+
+</body>
+
+</html>
+
+<script>
+    function getName() {
+        // step-1 select
+        const inp = document.getElementById("inp");
+        console.log(inp);
+
+        // step-2 
+        const data = inp.value;
+        console.log(data);
+        
+        // step-3 
+        const nme = document.getElementById("nm");
+        nme.innerText = inp.value;
+        const btn = document.getElementById("btn");
+        btn.style.backgroundColor = "red";
+    }
+
+
+
+
+
+</script>
