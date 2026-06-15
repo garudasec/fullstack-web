@@ -4,25 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Types of Selectors</title>
+    <title>Types of selectors</title>
 </head>
+
 <body>
     <div class="cont">
         <div id="rcb">virat</div>
-        <div id="rcb">dhoni</div>
-            <p>raina</p>
-            <h1 id="rcb">salt</h1>
-            <h1 id="rcb">watermelon</h1>
-            <h2>rohit</h2>
-            <h2>pandya</h2>
-            <h2 class="csk">ritu</h2>
-        
+        <div class="csk">dhoni </div>
+        <p>raina</p>
+        <h1 id="rcb">salt</h1>
+        <h1 id="rcb">dydhtgf</h1>
+        <h2>rohit</h2>
+        <h3>pandya</h3>
+        <h2 class="csk">ritu</h2>
 
     </div>
-
 </body>
+
 </html>
 
 <script>
+    // 1. getElementById: return 1st match el
+
+    const idEl = document.getElementById("rcb");
+    console.log(idEl);
+
+    // 2. getElementsByclassName: return all match el [ HTMLCollection]
+
+    const classEl = document.getElementsByClassName("csk");
+    console.log(classEl);
+    classEl[1].style.color = "yellow"
+
+
+    // 3. getElementsBytagName: return all match el [ HTMLCollection]
+
+    const tagEl = document.getElementsByTagName("h2");
+    console.log(tagEl);
+    tagEl[1].style.backgroundColor = "teal";
+
+    // 4. querySelector
+
+    const queryEl = document.querySelector(".cont>h1");
+    console.log(queryEl);
+
+    // 5. querySelectorAll [NodeList]
+
+    const queryallEl = document.querySelectorAll(".cont>h1");
+    console.log(queryallEl);
+
 
 </script>
