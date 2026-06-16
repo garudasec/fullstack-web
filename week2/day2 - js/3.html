@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forms in JS</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="email" id="email" placeholder="Enter email">
+        <input type="password" id="pass" placeholder="Enter password">
+        <br><br>
+        <hr>
+
+        <input type="submit">
+
+        <!-- we will not use this -->
+        <!-- <button onclick="getdata()">click</button> -->
+    </form>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", getdata)
+
+        function getdata(e) {
+            e.preventDefault()
+            const em = document.querySelector("#email").value;
+            const pp = document.querySelector("#pass").value;
+
+            console.log(em, pp);         
+        }
+    </script>
+</body>
+
+</html>
+
+<!--
+1. wrap all input tag inside form tag
+2. use type=submit for creating form always
+3. always apply submit event in form 
+4. use e.preventDefault()
+-->

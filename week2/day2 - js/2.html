@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Object</title>
+</head>
+
+<body>
+    <button>helluuuuu</button>
+
+    <script>
+        document.querySelector("button").addEventListener("click", getData);
+
+        function getData() {
+            console.log(event);
+            console.log(event.target);
+            console.log(event.type);
+            console.log(event.target.innerText);
+
+        }
+    </script>
+</body>
+
+</html>

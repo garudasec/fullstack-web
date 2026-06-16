@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<body>
+    
+
+    <script>
+        // data store hota hai key, value pair ki form me
+        // local storage have only 4 properties:
+
+        // 1. save data
+        localStorage.setItem("name", "adarsh")
+        localStorage.setItem("id", 26)
+
+        localStorage.setItem("hobby", JSON.stringify([1,2,3]))
+
+        // 2. get data
+        let nm = JSON.parse(localStorage.getItem("hobby"));
+        console.log(nm[1], typeof nm);
+
+        // 3. remove/delete key value pair
+        // localStorage.removeItem("name")
+
+        // 4. clear
+        // localStorage.clear()
+
+        
+        // json - universal information translation technique
+        // JSON - javascript object notation - very important
+
+    </script>
+</body>
+</html>

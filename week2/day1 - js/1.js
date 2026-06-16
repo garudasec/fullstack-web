@@ -102,6 +102,9 @@
 
 // 14. Callback and higher order funcction
 
+// jo ja rha callback,
+// jiske pas ja rha higher order function
+
 // yaha, ye hai high order function
 // function HOF(callback) {
 //     console.log("hello from HOF func.");

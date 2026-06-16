@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>addEventListener Method</title>
 </head>
+
 <body>
-    
+    <button onclick="sayhii()">Hii</button>
+    <button id="cm">click me..</button>
+
+    <script>
+        function sayhii() {
+            alert("hiiiiii");
+        }
+
+        const el = document.querySelector("#cm");
+        console.log(el);
+
+        // method 1
+        el.addEventListener("click", function () {
+            alert("hello from method 1");
+        })
+
+        // method 2
+        // el.addEventListener("click", getclick);
+
+        // // event handler
+        // function getclick() {
+        //     alert("hello from method 2")
+        // }
+    </script>
 </body>
 </html>
