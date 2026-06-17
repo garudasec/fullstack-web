@@ -9,7 +9,7 @@
 // }
 
 let todoArr = JSON.parse(localStorage.getItem("todo")) || [];
-let favArr = JSON.parse(localStorage.getItem("todo")) || [];
+let favArr = JSON.parse(localStorage.getItem("fav")) || [];
 
 displayTable(todoArr);
 
