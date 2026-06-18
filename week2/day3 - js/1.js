@@ -1,8 +1,11 @@
 // Asynchronous Programming(Welcome to Advance concept of Js)
 
-// 0. Asynchronous progg. vs synchronous progg.
-// 0.5 interpreted Progg language
-//1. Dynamically Type Programming Language
+// 0. Asynchronous progg. vs synchronous progg
+// synchro - top to bottom, left to right , line by line execution also execute immediately
+// asyncho - flow of code is decided by interpreter, execute after some delay
+
+// 0.5 interpreted Progg language - convert from high to low, line by line
+//1. Dynamically Type Programming Language - 
 
 // var x  = 10;
 // console.log(x, typeof x);
@@ -45,7 +48,10 @@
 
 
 
-//3. Lexical Scope in JS - visibility
+//3. Lexical Scope in JS - visibility/accesibility
+// var - function scope
+// let and const - block scope
+
 
 // hello()
 // function hello(){
@@ -65,7 +71,10 @@
 
 
 
-//4.  Execution Context
+//4.  Execution Context - run time environment for JS
+// when we run any code, global execution  context formed
+// has two phase - memore phase and execution phase
+// function ke liye dobara globa execution context banta hai jab execute ho jayga, to vo context delete ho jayga
 
 // console.log("start");
 // console.log(one());
@@ -117,7 +126,7 @@
 
 
 
-// //6. Event Loop
+// //6. Event Loop - to understand how async code is executed
 
 // console.log("start");
 
@@ -161,7 +170,7 @@
 
 
 
-// 7. Closures ---> func + its lexical scope
+// 7. Closures ---> encapsulation , func + its lexical scope
 
 // function outer() {
 //     let count = 0;
