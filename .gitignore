@@ -1,3 +1,9 @@
-*.md
+# *.md   -> ye method nahi karna tha coz agar or files jese README.md bnaya hota to vobhi ignore ho jata and nahi show hota github par..
 
+
+# Personal Notes
+fullstack-webdev-notes/
+
+
+# Dependencies
 node_modules
