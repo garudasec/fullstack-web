@@ -1,7 +1,9 @@
 import express from 'express';
 import route from './routes/userRoute.js'
 
+
 const app = express();
+
 
 // mounting
 app.use(route) 
