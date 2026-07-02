@@ -1,9 +1,8 @@
 import express from 'express';
 import route from './routes/userRoute.js'
-import cors from './routes/userRoute.js'
+import cors from 'cors'
 
 const app = express();
-
 
 
 // mounting
