@@ -1,92 +1,90 @@
-use("users")
+use("users");  // users is a database name
 
-//this is create operation
+// CREATE OPERATION
 
 // db.employees.insertOne(
 //   {
-//     name: "John Doe",
-//     age: 25,
-//     salary: 50000,
-//     email:"john.doe@example.com"
+//     name: "Sanjay Yadav",
+//     age: 40,
+//     salary: 5000000,
+//     email:"sanjayyadav@example.com"
 //   }
 // )
 
-
-
 // db.employees.insertMany([
 //   {
-//     name: "aman rathore",
+//     name: "Aman Rathore",
 //     age: 30,
 //     salary: 60000,
 //     email: "aman.rathore@gmail.com"
 //   },
 //   {
-//     name: "aman rathore",
-//     age: 30,
-//     salary: 60000,
-//     email: "amanrathore@gmail.com"
-//   },
-//   {
-//     name: "sachin",
+//     name: "Sachin Verma",
 //     age: 28,
 //     salary: 55000,
 //     email: "sachin@gmail.com"
 //   },
 //   {
-//     name: "rahul",
+//     name: "Rohit Rana",
 //     age: 35,
 //     salary: 70000,
-//     email: "rahul@gmail.com"
+//     email: "rohit345@gmail.com"
 //   },
 //   {
-//     name: "rohit",
+//     name: "Rohit Rana",
 //     age: 32,
 //     salary: 65000,
-//     email: "rohit@gmail.com"
+//     email: "rohit2934@gmail.com"
+//   },
+//   {
+//     name: "Devansh Singh",
+//     age: 50,
+//     salary: 6000000000,
+//     email: "devanshsingh5588@gmail.com",
 //   }
 // ])
 
+ 
 
 
-// this is read operation
+
+// READ OPERATION
 
 // findOne - to get one document from the collection
 // db.employees.findOne({
-//   name:"sachin"
+//   name:"Devansh Singh"
 // })
 
 // // find - to get all documents from the collection
 // db.employees.find({
-//   name:"sachin"
+//   name:"Rohit Rana"
 // })
 
 
 
-// this is update operation
+
+// UPDATE OPERATION
 
 // updateOne - to update one document from the collection
 // db.employees.updateOne(
-//   { name: "sachin" },  // this one for find
+//   { name: "Sachin Verma" },  // this one for find
 //   { $set: { salary: 60000000 } }  // this one for update
 // )
 
-
 // updateMany - to update many documents from the collection
 // db.employees.updateMany(
-//   { age: 32}, // this one for find
-//   { $set: { email: "agehogyi32hahaha@gmail.com"}} // this one for update
+//   { salary: 5000000}, // this one for find
+//   { $set: { empId:00001}} // this one for update
 // )
 
-
-// this is delete operation
+// DELETE OPERATION
 
 // deleteOne - to delete one document from the collection
 // db.employees.deleteOne({
-//   name: "sachin"
-// })
-
+//   name: "Rohit Rana"
+// });
 
 // deleteMany - to delete many documents from the collection
-db.employees.deleteMany({
-  age: 32
-})
+// db.employees.deleteMany({
+//   age: 32
+// })
