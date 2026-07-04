@@ -6,7 +6,7 @@ import express from "express";
 // and ye express function object return krega jo humne app me store kardiya
 
 const app = express();
-const port = 4000;
+const port = 3000;
 
 app.use(express.json());
 

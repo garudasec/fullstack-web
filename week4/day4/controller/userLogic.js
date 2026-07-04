@@ -38,7 +38,13 @@ const createUser = (req, res) => {
   res.status(201).json({
     success: true,
     message: "User created successfully",
+    data:employee
   });
+
+  console.log(req.body);
+  
+
+
 };
 
 // PUT -> update an existing employee
