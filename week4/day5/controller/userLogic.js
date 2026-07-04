@@ -6,7 +6,7 @@ const createUser = async (req, res) => {
     // validation
     if (!name || !email || !empId) {
       return res.status(404).json({
-        message: "data not found",
+        message: "data not found"
       });
     }
 
