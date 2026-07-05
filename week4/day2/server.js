@@ -85,14 +85,22 @@ app.put("/updateUser", (req,res) => {
   const {name, newName} = req.body;
   let index = users.indexOf(name);
 
+  // check if user exist or not
+  if(index === -1){
+    return res.json({
+      success: false,
+      message: "user not found"
+    });
+  }
+
   users[index] = newName;
 
   res.json({
     data: users,
     success: true,
     message: "data updated successfully"
-  })
-})
+  });
+});
 
 
 
@@ -103,12 +111,22 @@ app.delete('/deleteUser', (req,res) => {
   
   const index = users.indexOf(name)
 
-  users.splice[index,1]
+  //check if user exist or not
+  if(index === -1){
+    return res.json({
+      success: false,
+      message: "user not found"
+    });
+  }
+
+  users.splice(index, 1)
+
   res.json({
     data:users,
     success: true,
     message: 'user deleted succesfully'
-  })
+  });
+  
 })
 
 
