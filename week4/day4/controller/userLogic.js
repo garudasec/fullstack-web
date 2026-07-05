@@ -24,81 +24,96 @@ const getUser = (req, res) => {
 const createUser = (req, res) => {
   const { name, email, empId } = req.body; // object destructuring of request body to get the name,email and empId
 
-
   // validation: to check all required fields are present or not
   if (!name || !email || !empId) {
-    res.status(400).json({
+    return res.status(400).json({
       success: false,
-      message: "should include the name,email and the empId",
+      message: "All fields are required",
     });
   }
 
-  employee.push(name, email, empId);
+  // create employee object
+  const newEmployee = {
+    name,
+    email,
+    empId,
+  };
+
+  employee.push(newEmployee); // push the new employee object to the employee array
 
   res.status(201).json({
     success: true,
     message: "User created successfully",
-    data:employee
+    data: employee,
   });
 
   console.log(req.body);
-  
-
-
 };
 
 // PUT -> update an existing employee
+
 const updateUser = (req, res) => {
   const { empId, newName } = req.body;
 
-  // validation: to check all required fields
+  // validation:
   if (!empId || !newName) {
-    res.status(400).json({
+    return res.status(400).json({
       success: false,
-      message: "needed empId and name",
+      message: "Required fields are missing",
     });
   }
 
-  // finding user by empId
-  let user = employee.find((value) => value.empId === empId);
+  // find employee
+  const user = employee.find((value) => value.empId == empId);
 
+  // validation: employee exist?
   if (!user) {
-    res.json({
+    return res.status(404).json({
       success: false,
-      message: "user doesn't exists",
+      message: "Employee not found",
     });
   }
 
+  // yaha simple update kara hai humne
   user.name = newName;
 
-  res.json({
+  res.status(200).json({
     data: employee,
     success: true,
-    message: "user updated successfully",
+    message: "Employee updated successfully",
   });
 };
 
-
 // DELETE -> delete an existing employee
-const deleteUser = (req,res) => {
-    const {empId} = req.body;
 
-    // validation:
-    if (!empId) {
-        res.status(400).json({
-            success:false,
-            message:"needed employee id"
-        })
-    }
+const deleteUser = (req, res) => {
+  const { empId } = req.body;
 
-    // filtering the user with matching field
-    employee = employee.filter((value)=> value.empId!=empId)
-    
-    res.json({
-        success:true,
-        message: "user is delted"
+  // phle index find karna hai ki kya delete karna hai
+  const index = employee.findIndex((value) => value.empId == empId);
+
+  // validation: employee exist?
+  if (index === -1) {
+    return res.status(404).json({
+      success:false,
+      message:"Employee not found"
     })
-}
+  }
+
+  // delete emplooyee
+  employee.splice(index,1);
+
+  res.status(200).json({
+    success:true,
+    data:employee,
+    message:"EMployee deleted successfully"
+  })
+
+  res.json({
+    success: true,
+    message: "user is delted",
+  });
+};
 
 // exporting controller function so that we can use it in the routes
-export { getUser, createUser, updateUser , deleteUser };
+export { getUser, createUser, updateUser, deleteUser };
