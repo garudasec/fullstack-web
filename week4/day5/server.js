@@ -3,11 +3,11 @@ import connectDB from './database/mongoDB.js';
 import router from './routes/route.js';
 import cors from 'cors'
 
+const app = express();  // here express() is object
 
-const app = express();
-
-app.use(cors())
-app.use(express.json())
+// mounting
+// app.use(cors()) // third-party imported middleware
+app.use(express.json()) // in-built middleware
 app.use(router)
 
 const port = 4000

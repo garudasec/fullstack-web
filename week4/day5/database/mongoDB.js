@@ -7,7 +7,7 @@ async function connectDB() {
         
     } catch (error) {
         console.log(`Failed to connect Database ${error}`)
-        process.exit(1)
+        process.exit(1) // mongoose apna process band kar dega jo connection kar rha  tha
     }
 }
 

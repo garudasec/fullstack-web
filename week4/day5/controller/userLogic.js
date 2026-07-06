@@ -55,7 +55,7 @@ const getUser = async (req,res) => {
 
 const updateUser = async (req,res) => {
   try {
-    const { empId, newName} = req.body;
+    const { empId, newName } = req.body;
 
     if (!empId || !newName) {
       return res.status(400).json({
