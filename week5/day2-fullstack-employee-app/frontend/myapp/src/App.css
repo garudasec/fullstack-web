@@ -1,0 +1,392 @@
+/* ---------- Page shell ---------- */
+#root > div {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+  overflow: hidden; /* the page itself never scrolls */
+}
+
+#root > div > div {
+  width: 100%;
+  max-width: 1080px;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: 28px;
+  row-gap: 4px;
+  height: 100%;
+  min-height: 0; /* important so children can actually shrink & scroll */
+}
+
+/* Header spans both columns */
+#root > div > div > h1 {
+  grid-column: 1 / -1;
+}
+
+/* Form takes the left column, stays put (no scroll needed for it) */
+#root > div > div > form {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  position: sticky;
+  top: 0;
+}
+
+/* Directory takes the right column and scrolls internally */
+#root > div > div > form + div {
+  grid-column: 2;
+  grid-row: 2;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+  align-content: start;
+}
+
+/* ---------- Header ---------- */
+#root > div > div > h1 {
+  font-size: 1.9rem;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+#root > div > div > h1::before {
+  content: "💼";
+  margin-right: 10px;
+}
+
+#root > div > div > h1::after {
+  content: "Add, view and manage employee records";
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  letter-spacing: 0;
+  margin-top: 8px;
+  margin-bottom: 32px;
+}
+
+/* ---------- Form card ("Add New Employee") ---------- */
+form {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 30px 28px 26px;
+  margin-bottom: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 14px;
+  overflow: hidden;
+}
+
+/* Colored accent bar on top of the card */
+form::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), #818cf8);
+}
+
+/* Section title generated purely via CSS */
+form::before {
+  content: "Add New Employee";
+  flex: 1 1 100%;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+form br {
+  display: none;
+}
+
+form input {
+  flex: 1 1 220px;
+  padding: 12px 14px;
+  font-size: 0.93rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: #fafbfc;
+  color: var(--color-text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+form input::placeholder {
+  color: var(--color-text-muted);
+}
+
+form input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: #fff;
+  box-shadow: 0 0 0 4px var(--color-primary-light);
+}
+
+form button[type="submit"] {
+  flex: 1 1 100%;
+  margin-top: 6px;
+  padding: 13px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  transition: background 0.15s ease, transform 0.05s ease, box-shadow 0.15s ease;
+}
+
+form button[type="submit"]::before {
+  content: "+ ";
+}
+
+form button[type="submit"]:hover {
+  background: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+form button[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+/* ---------- Employee list section ---------- */
+form + div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* "Employee Directory" heading, generated via CSS */
+form + div::before {
+  content: "Employee Directory";
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+/* Friendly empty state when there are no records yet */
+form + div:has(> div:only-child)::after,
+form + div:empty::after {
+  content: "No employees added yet — fill the form to get started.";
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: 36px 20px;
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+}
+
+/* ---------- Individual employee row ---------- */
+/* Layout:
+     Name                Emp. Id
+     Email               Delete / Edit
+     Salary
+*/
+form + div > div {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  column-gap: 24px;
+  row-gap: 8px;
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+  padding: 18px 22px 18px 26px;
+  transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+}
+
+/* Left accent bar per row */
+form + div > div::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: 0;
+  width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--color-primary), #818cf8);
+  opacity: 0.85;
+}
+
+form + div > div:hover {
+  box-shadow: var(--shadow-md);
+  border-color: #d9deec;
+  transform: translateY(-2px);
+}
+
+form + div > div > p {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  padding: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Name — left column, row 1 */
+form + div > div > p:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Email — left column, row 2 */
+form + div > div > p:nth-of-type(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/* Emp. Id — right column, row 1 */
+form + div > div > p:nth-of-type(3) {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Salary — left column, row 3 */
+form + div > div > p:nth-of-type(4) {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+/* Small icons ahead of each detail for a scannable look */
+form + div > div > p:nth-of-type(2)::before {
+  content: "✉ ";
+}
+
+form + div > div > p:nth-of-type(3)::before {
+  content: "🆔 ";
+}
+
+form + div > div > p:nth-of-type(4)::before {
+  content: "💰 ";
+}
+
+/* Divider is unnecessary now that rows are boxed individually */
+form + div > div > hr {
+  display: none;
+}
+
+/* Actions wrapper (Delete / Edit buttons) — right column, row 2 */
+form + div > div > div {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;
+  display: flex;
+  gap: 8px;
+}
+
+form + div > div > div > button {
+  flex: 0 0 auto;
+  padding: 7px 14px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  border-radius: 7px;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* First button = Delete */
+form + div > div > div > button:first-child {
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+form + div > div > div > button:first-child::before {
+  content: "🗑 ";
+}
+
+form + div > div > div > button:first-child:hover {
+  background: var(--color-danger);
+  color: #fff;
+}
+
+/* Second button = Edit */
+form + div > div > div > button:last-child {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+form + div > div > div > button:last-child::before {
+  content: "✎ ";
+}
+
+form + div > div > div > button:last-child:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  /* Below this width, drop the two-column dashboard layout
+     and let the page scroll normally — the sticky/scroll panel
+     trick only makes sense with side-by-side space. */
+  #root > div {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    padding: 32px 16px 80px;
+  }
+
+  #root > div > div {
+    display: block;
+    height: auto;
+  }
+
+  #root > div > div > form {
+    position: static;
+    margin-bottom: 28px;
+  }
+
+  #root > div > div > form + div {
+    overflow: visible;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  form {
+    padding: 22px 18px;
+  }
+
+  #root > div > div > h1 {
+    font-size: 1.5rem;
+  }
+
+  form + div > div {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    row-gap: 6px;
+  }
+
+  form + div > div > p:nth-of-type(3) {
+    grid-column: 1;
+    grid-row: 4;
+    justify-self: start;
+  }
+
+  form + div > div > p {
+    white-space: normal;
+  }
+
+  form + div > div > div {
+    grid-column: 1;
+    grid-row: 5;
+    justify-self: start;
+    margin-top: 4px;
+  }
+}
