@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema({
     empId:{
         type:Number,
         required:true
+    },
+    salary:{
+        type:Number,
+        required:true
     }
 })
 

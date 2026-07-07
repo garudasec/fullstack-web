@@ -4,16 +4,16 @@ import User from "../model/user.js";
 // CREATE USER LOGIC
 const createUser = async (req, res) => {
   try {
-    const { name, email, empId } = req.body;
+    const { name, email, empId, salary } = req.body;
     // validation
-    if (!name || !email || !empId) {
+    if (!name || !email || !empId || !salary) {
       return res.status(400).json({
         message: "data not found"
       });
     }
 
     // data creation...
-    const newUser = await User.create({ name, email, empId });
+    const newUser = await User.create({ name, email, empId, salary });
     console.log(newUser);
 
     // send response to user
