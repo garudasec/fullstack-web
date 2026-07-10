@@ -52,43 +52,36 @@ const getUser = async (req,res) => {
 
 
 // PUT (UPDATE) LOGIC
-
-const updateUser = async (req,res) => {
+const updateUser = async (req, res) => {
   try {
-    const { empId, newName } = req.body;
+    const { userId } = req.params;
 
-    if (!empId || !newName) {
-      return res.status(400).json({
-        success: false,
-        message: "All fields are required"
-      })
-    }
-
-    const updatedUser = await User.findOneAndUpdate(
-      {empId},
-      {name: newName},
-      {new: true}
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      req.body,
+      {new:true}
     );
 
     if (!updatedUser) {
       return res.status(404).json({
-        success:false,
+        success: false,
         message: "Employee not found"
-      })
+      });
     }
 
     return res.status(200).json({
       success: true,
       data: updatedUser,
-      message: "Employeess updated successfully"
-    })
-    
-  } catch (error) {
+      message: "Employee updated successfully"
+    });
+
+
+  }
+  catch(error) {
     return res.status(500).json({
       success: false,
       message: error.message
     })
-    
   }
 }
 
@@ -96,17 +89,17 @@ const updateUser = async (req,res) => {
 // DELETE USER LOGIC
 const deleteUser = async (req, res) => {
   try {
-    const { empId } = req.body;
+    const { userId } = req.params;
 
     // validation
-    if (!empId) {
+    if (!userId) {
       return res.status(400).json({
         success:false,
-        message: "Employee ID is required"
+        message: "User ID is required"
       })
     }
 
-    const deletedUser = await User.findOneAndDelete({ empId });
+    const deletedUser = await User.findByIdAndDelete(userId);
 
     if (!deletedUser) {
       return res.status(404).json({

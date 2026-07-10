@@ -1,9 +1,11 @@
-const backendApiUrl = 'http://localhost:4000';
+const backendApiUrl = 'http://localhost:4000'
 
-const createUserApi = `${backendApiUrl}/createUser`
-const getUserApi = `${backendApiUrl}/getUser`
-const updateUserApi = `${backendApiUrl}/updateUser`
-const deleteUserApi = `${backendApiUrl}/deleteUser`
+const createuserapi = `${backendApiUrl}/createuser`
 
+const getuserapi = `${backendApiUrl}/getuser`
 
-export {createUserApi, getUserApi, updateUserApi, deleteUserApi}
+const updateuserapi = `${backendApiUrl}/updateuser`
+
+const deleteuserapi = `${backendApiUrl}/deleteuser`
+
+export {createuserapi, getuserapi, updateuserapi, deleteuserapi}
